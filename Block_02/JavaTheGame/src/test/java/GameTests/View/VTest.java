@@ -12,21 +12,25 @@ public class VTest extends OutputTest {
     @Test
     public void testPrintMessage() {
         View view = new View();
-        String test = "Test string"+"\n";
+        String expected = "Test string";
+        String actual;
 
-        view.printMessage(test);
+        view.printMessage(expected);
+        actual = output.toString();
 
-        assertEquals(test, output.toString());
+        assertEquals(expected+"\r\n", actual);
     }
 
     @Test
     public void printMessageAndInt() {
         View view = new View();
-        String test = "Test string ";
-        int testInt = 5;
+        String expected = "Test string ";
+        int expectedlInt = 5;
+        String actual;
 
-        view.printMessageAndInt(test, testInt);
+        view.printMessageAndInt(expected, expectedlInt);
+        actual = output.toString();
 
-        assertEquals(test+testInt +"\n", output.toString());
+        assertEquals(expected+expectedlInt +"\r\n", actual);
     }
 }
