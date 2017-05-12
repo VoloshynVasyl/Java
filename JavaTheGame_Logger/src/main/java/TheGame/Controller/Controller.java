@@ -3,15 +3,17 @@ package TheGame.Controller;
 import java.util.Scanner;
 import TheGame.Model.Model;
 import TheGame.View.View;
+import org.apache.log4j.Logger;
 /**
  * Created by Vasyl_Voloshyn on 4/18/2017.
  */
 public class Controller {
     // The Constants
-    int min = 0;
-    int max = 100;
-    int currentValue;
-    int numberOfTry = 1;
+    private int min = Model.MIN;
+    private int max = Model.MAX;
+    private int currentValue;
+    private int numberOfTry = 1;
+    private static final Logger log = Logger.getLogger(Controller.class);
 
     // Constructor
     Model model;
@@ -27,21 +29,26 @@ public class Controller {
     Scanner sc;
 
     public void processUser(){
+        int rnd = model.getRnd();
 
         while(true){
             view.printMessage(View.FROM + min + View.TO + max);
+            log.info(View.FROM + min + View.TO + max);
             currentValue = sizeCheck(inputIntValueWithScanner(sc));
-            if(currentValue > model.getRnd()){
+            if(currentValue > rnd){
                 max = currentValue;
                 view.printMessage(View.NUMBER_BIGGER_THAN_VALUE);
+                log.info(View.NUMBER_BIGGER_THAN_VALUE);
             }
-            if(currentValue < model.getRnd()){
+            if(currentValue < rnd){
                 min = currentValue;
                 view.printMessage(View.NUMBER_LESS_THAN_VALUE);
+                log.info(View.NUMBER_LESS_THAN_VALUE);
             }
-            if(currentValue == model.getRnd()){
+            if(currentValue == rnd){
                 view.printMessage(View.SCORE + numberOfTry + View.ATTEMPTS);
                 view.printMessage(View.WINNER);
+                log.info(View.SCORE + numberOfTry + View.ATTEMPTS + "\n" + View.WINNER);
                 break;
             }
             numberOfTry++;
@@ -51,11 +58,15 @@ public class Controller {
     // The Utility methods
     private int inputIntValueWithScanner(Scanner sc) {
         view.printMessage(View.INPUT_INT_DATA);
+        log.info(View.INPUT_INT_DATA);
         while( ! sc.hasNextInt()) {
             view.printMessage(View.WRONG_INPUT_INT_DATA + View.INPUT_INT_DATA);
+            log.error(View.WRONG_INPUT_INT_DATA + View.INPUT_INT_DATA);
             sc.next();
         }
-        return sc.nextInt();
+        int value = sc.nextInt();
+        log.info(value);
+        return value;
     }
 
     private int sizeCheck(int value){
@@ -64,6 +75,7 @@ public class Controller {
         }
         else{
             view.printMessage(View.OUT_OF_BOUNDS);
+            log.error(View.OUT_OF_BOUNDS);
             return inputIntValueWithScanner(sc);
         }
     }

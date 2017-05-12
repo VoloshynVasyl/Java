@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<phoneBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MyPhoneBookSchema.xsd">
+    <note>
+        <name>Vasyl</name>
+        <surname>Voloshyn</surname>
+        <patronymic>Alexandrovich</patronymic>
+        <surnameAndInitials>Voloshyn V</surnameAndInitials>
+        <nickname>Ghost</nickname>
+        <comment></comment>
+        <group>FAMILY</group>
+        <homePhone>1235485</homePhone>
+        <cellPhone>0630268645</cellPhone>
+        <secondCellPhone></secondCellPhone>
+        <email>voloshinvasily@gmail.com</email>
+        <skype>ghost_181295</skype>
+        <address>
+            <index>112233</index>
+            <city>Kyiv</city>
+            <street>Metalistiv</street>
+            <house>7</house>
+            <apartment>105</apartment>
+        </address>
+        <fullAddress>112233, Kyiv, Metalistiv, 7, 105</fullAddress>
+        <registrationDate>05.12.2017</registrationDate>
+        <lastEditDate>05.12.2017</lastEditDate>
+    </note>
+</phoneBook>

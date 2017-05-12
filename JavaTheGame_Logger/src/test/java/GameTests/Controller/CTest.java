@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class CTest extends OutputTest{
     @Test
-    public void shouldContainsMessageAboutWin() {
+    public void shouldProcessUserInput() {
         String input = "50\n25\n";
         Model model = mock(Model.class);
         View view = new View();
@@ -26,28 +26,6 @@ public class CTest extends OutputTest{
         int max = 100;
         int randNum = 25;
         String subString = View.WINNER;
-
-        when(model.rand(min, max)).thenReturn(randNum);
-        when(model.getRnd()).thenReturn(randNum);
-        controller = new Controller(model, view, sc);
-        controller.processUser();
-
-        String testOutput = output.toString();
-        assertTrue(testOutput.contains(subString));
-    }
-
-    @Test
-    public void shouldContainsMessageAboutWrongInput() {
-        String input = "50\n60\n25\n";
-        Model model = mock(Model.class);
-        View view = new View();
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        Scanner sc = new Scanner(in);
-        Controller controller;
-        int min = 0;
-        int max = 100;
-        int randNum = 25;
-        String subString = View.OUT_OF_BOUNDS;
 
         when(model.rand(min, max)).thenReturn(randNum);
         when(model.getRnd()).thenReturn(randNum);
