@@ -21,7 +21,7 @@ public class Program {
             threads.add(new MyThread(tmpArray, i));
         }
         for (MyThread thread: threads) {
-            thread.start();
+            thread.run();
         }
         for (MyThread thread: threads) {
             thread.join();
@@ -55,7 +55,7 @@ public class Program {
 
     public void addElToArray(int[] array){
         for(int i = 0; i<array.length; i++){
-            array[i] =10;
+            array[i] =1;
         }
     }
 }
